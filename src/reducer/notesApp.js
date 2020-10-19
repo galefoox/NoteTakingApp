@@ -17,6 +17,8 @@ export function deletenote(id) {
     return {
         type: DELETE_NOTE,
         payload: id
+        //id:noteID--,
+        //note
     }
 }
 

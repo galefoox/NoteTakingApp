@@ -4,6 +4,22 @@ import {createStackNavigator} from 'react-navigation-stack'
 import ViewNotes from '../screens/ViewNotes'
 import AddNotes from '../screens/AddNotes'
 
+/*const screens = {
+    ViewNotes: {
+        screen: ViewNotes
+    },
+    AddNotes:{
+        screen: AddNotes
+    },
+    
+        initialRouteName: 'ViewNotes',
+        headerMode : 'none',
+        mode: 'modal'
+    
+}
+
+    const HomeStack = createStackNavigator(screens);*/
+
 const StackNavigator = createStackNavigator({
 ViewNotes: {
     screen: ViewNotes
@@ -19,6 +35,8 @@ AddNotes:{
 }
 )
 
-export default createAppContainer(StackNavigator)
+//export default createAppContainer(HomeStack);
+export default createAppContainer(StackNavigator);
+
 
 

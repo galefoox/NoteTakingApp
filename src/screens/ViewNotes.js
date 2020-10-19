@@ -1,9 +1,12 @@
 import React, { useState } from 'react'
-import { StyleSheet, View, FlatList } from 'react-native'
+import { StyleSheet, View, FlatList, Dimensions } from 'react-native'
 import { Text, FAB, List } from 'react-native-paper'
 import Header from '../component/Header'
 import { useSelector, useDispatch } from 'react-redux'
 import { addnote, deletenote } from '../reducer/notesApp'
+
+const deviceHeight = Dimensions.get('window').height;
+const deviceWidth = Dimensions.get('window').width;
 
 function ViewNotes({ navigation }) {
     // const [notes, setNotes] = useState([])
@@ -15,16 +18,21 @@ function ViewNotes({ navigation }) {
         dispatch(addnote(note))
     }
 
-    const deleteNote = id =>dispatch(deletenote(id))
+    const deleteNote = note => {
+        console.log(note)
+        dispatch(deletenote(note))
+    }
 
-    // const addNotes = note => {
-    //     note.id = notes.length + 1
-    //     setNotes([...notes, note])
-    // }
+    //const deleteNote = id =>dispatch(deletenote(id))
+
+     /*const addNotes = note => {
+         note.id = notes.length + 1
+         setNotes([...notes, note])
+     }*/
 
     return (
         <>
-            <Header titleText='Simple Note Taking App' />
+            <Header titleText='Note Taking App' />
             <View style={styles.container}>
                 {notes.length === 0 ? (
                     <View style={styles.titleContainer}>
@@ -50,7 +58,7 @@ function ViewNotes({ navigation }) {
                     style={styles.fab}
                     small
                     icon='plus'
-                    label='Add a new Note'
+                    label='New Note'
                     onPress={() => navigation.navigate('AddNotes', {
                         addNote
                     })
@@ -65,7 +73,7 @@ function ViewNotes({ navigation }) {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#fff',
+        backgroundColor: '#E7FEFF',
         paddingVertical: 20,
         paddingHorizontal: 10
     },
@@ -75,14 +83,15 @@ const styles = StyleSheet.create({
         flex: 1
     },
     title: {
-        fontSize: 20
+        fontSize: deviceHeight / 30,
+        fontFamily: 'Georgia'
     },
     fab: {
-        backgroundColor: '#219653',
+        backgroundColor: '#425a6e',
         position: 'absolute',
-        margin: 20,
+        margin: deviceHeight / 20,
         right: 0,
-        bottom: 10
+        bottom: deviceHeight / 20
     },
     listTitle: {
         fontSize: 20
